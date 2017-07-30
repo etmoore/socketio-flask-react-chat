@@ -1,0 +1,8 @@
+.ControlBar {
+  outline: 1px solid black;
+  padding: 5px 10px;
+}
+
+#username {
+  margin-left: 4px;
+}
