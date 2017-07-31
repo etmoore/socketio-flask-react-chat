@@ -8,13 +8,16 @@ class ControlBar extends Component {
 
         <label for='username'>
           Username:
-          <input name='username' id='username' type='text' placeholder='e.g. W3C' />
+          <input name='username' id='username' type='text' placeholder='e.g. evmo' />
         </label>
 
         <label for='partner'>
           Start a Conversation:
           <select name='partner' id='partner'>
             <option value='Select a user...' selected disbled >Select a user...</option>
+            <option value='Tom'>Tom</option>
+            <option value='WillC'>WillC</option>
+            <option value='Po'>Po</option>
           </select>
         </label>
 
