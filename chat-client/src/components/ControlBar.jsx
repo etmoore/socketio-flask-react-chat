@@ -6,15 +6,14 @@ class ControlBar extends Component {
     return (
       <div className='ControlBar'>
 
-        <label for='username'>
+        <label htmlFor='username'>
           Username:
           <input name='username' id='username' type='text' placeholder='e.g. evmo' />
         </label>
 
-        <label for='partner'>
+        <label htmlFor='partner'>
           Start a Conversation:
-          <select name='partner' id='partner'>
-            <option value='Select a user...' selected disbled >Select a user...</option>
+          <select name='partner' id='partner' >
             <option value='Tom'>Tom</option>
             <option value='WillC'>WillC</option>
             <option value='Po'>Po</option>
