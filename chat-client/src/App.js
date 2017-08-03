@@ -4,53 +4,65 @@ import ControlBar from './components/ControlBar'
 import Conversations from './components/Conversations'
 import io from 'socket.io-client'
 
+const socket = io('http://localhost:5000')
+
 class App extends Component {
   constructor (props) {
     super(props)
-    this.state = { message: '' }
-    this.socket = io('http://localhost:5000')
+    this.state = {
+      message: ''
+    }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.joinRoom = this.joinRoom.bind(this)
   }
+
   handleChange (event) {
     this.setState({ message: event.target.value })
   }
+
   handleSubmit (event) {
     event.preventDefault()
-    this.socket.emit('message#send', {message: this.state.message})
+    socket.emit('message_send', {message: this.state.message})
   }
+
   componentDidMount () {
-    this.socket.on('connect', () => {
+    socket.on('connect', () => {
       console.log('Client connected!')
     })
-    this.socket.on('message#receive', (data) => {
+    socket.on('message_receive', (data) => {
       const textNode = document.createTextNode(data.message)
       document.getElementById('log').appendChild(textNode)
     })
-    this.socket.on('my_response', (data) => {
+    socket.on('my_response', (data) => {
       console.log(data.message)
     })
   }
+
+  joinRoom (username, partner) {
+    const room = [username, partner].sort().join('')
+    socket.emit('join_room', { username, room })
+  }
+
   render () {
     return (
       <div className='App'>
         <h1>Chat Server</h1>
-        <ControlBar />
+        <ControlBar joinRoom={this.joinRoom} />
         <Conversations />
         <form action='#' method='POST' onSubmit={this.handleSubmit}>
           <label>
             Message:
-            <input type="text"
+            <input type='text'
                    onChange={this.handleChange}
                    value={this.state.message} />
           </label>
-          <input type="submit" value="Send" />
+          <input type='submit' value='Send' />
         </form>
         <div id='log' />
       </div>
     )
   }
-
 }
 
 export default App
