@@ -10,13 +10,13 @@ CORS(app)
 
 @socket.on('connect')
 def on_connect():
-    emit('my_response', {'message': 'Hello from the server'}, broadcast=True)
+    send({'message': 'Hello from the server'}, broadcast=True)
 
 
 @socket.on('disconnect')
 def on_disconnect():
     print('user disconnected')
-    emit('my_response', {'message': 'User disconnected from the server'})
+    send({'message': 'User disconnected from the server'})
 
 
 @socket.on('join_room')
@@ -24,8 +24,7 @@ def on_join(data):
     username = data['username']
     room = data['room']
     join_room(room)
-    emit('my_response',
-         {'message': username + ' has entered the room:' + room},
+    send({'message': username + ' has entered the room:' + room},
          room=room)
 
 
@@ -34,7 +33,7 @@ def on_leave(data):
     username = data['username']
     room = data['room']
     leave_room(room)
-    send(username + ' has left the room.', room=room)
+    send(username + ' has left the room:' + room, room=room)
 
 
 @socket.on('message_send')
