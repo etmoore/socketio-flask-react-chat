@@ -10,8 +10,7 @@ class ControlBar extends Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.changeUsername = this.changeUsername.bind(this)
-    this.changeParter = this.changeParter.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit (event) {
@@ -22,12 +21,9 @@ class ControlBar extends Component {
     }
   }
 
-  changeUsername (event) {
-    this.setState({ username: event.target.value })
-  }
-
-  changeParter (event) {
-    this.setState({ partner: event.target.value })
+  handleChange (event) {
+    const {name, value} = event.target
+    this.setState({ [name]: value})
   }
 
   render () {
@@ -39,14 +35,17 @@ class ControlBar extends Component {
             Username:
             <input
               name='username'
-              onChange={this.changeUsername}
+              onChange={this.handleChange}
               type='text'
               placeholder='e.g. evmo' />
           </label>
 
           <label>
             Start a Conversation:
-            <select onChange={this.changeParter} value={this.state.partner}>
+            <select
+              name='partner'
+              onChange={this.handleChange}
+              value={this.state.partner}>
               <option value=''>Select a user...</option>
               <option value='Tom'>Tom</option>
               <option value='WillC'>WillC</option>
