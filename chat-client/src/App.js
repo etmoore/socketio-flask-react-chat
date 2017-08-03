@@ -10,7 +10,8 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      message: ''
+      username: '',
+      rooms: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,14 +35,19 @@ class App extends Component {
       const textNode = document.createTextNode(data.message)
       document.getElementById('log').appendChild(textNode)
     })
-    socket.on('my_response', (data) => {
+    socket.on('message', (data) => {
       console.log(data.message)
     })
   }
 
   joinRoom (username, partner) {
-    const room = [username, partner].sort().join('')
-    socket.emit('join_room', { username, room })
+    this.setState({username: username})
+    const room = [username, partner].sort().join('|')
+    socket.emit(
+      'join_room',
+      { username, room },
+      () => this.setState({rooms: [...this.state.rooms, room]})
+    )
   }
 
   render () {
