@@ -1,39 +1,44 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import Chat from './Chat'
 import './Conversations.css'
 
 class Conversations extends Component {
+  constructor (props) {
+    super(props)
+    this.getPartnerName = this.getPartnerName.bind(this)
+  }
+
+  getPartnerName (room) {
+    const members = room.split('|')
+    return members.filter((member) => member !== this.props.username)[0]
+  }
+
   render () {
+    const {username, rooms} = this.props
+    const chatWindows = rooms.map((room, i) => {
+      const partner = this.getPartnerName(room)
+      return (
+        <Chat
+          key={i}
+          room={room}
+          username={username}
+          partner={partner} />
+      )
+    })
     return (
-      <div className='Conversations'>
+      <div className='conversations'>
 
-        <div className='chat'>
-          <div className='chat-header'>
-            <h2>PoShen</h2>
-          </div>
-          <div className='chat-body'>
-            <p><strong>WillC:</strong> Hey Po!</p>
-            <p><strong>PoShen: </strong> Hey Will, what's up?</p>
-          </div>
-          <div className='chat-input'>
-            <input type='text' name='message' />
-          </div>
-        </div>
+        {chatWindows}
 
-        <div className='chat'>
-          <div className='chat-header'>
-            <h2>Tom</h2>
-          </div>
-          <div className='chat-body'>
-            <p><strong>Tom:</strong> Hey Will, fix the the site!</p>
-            <p><strong>WillC: </strong> Sorry Tom...</p>
-          </div>
-          <div className='chat-input'>
-            <input type='text' name='message' />
-          </div>
-        </div>
       </div>
     )
   }
+}
+
+Conversations.PropTypes = {
+  username: PropTypes.string,
+  rooms: PropTypes.arrayOf(PropTypes.string),
 }
 
 export default Conversations

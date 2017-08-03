@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './ControlBar.css'
 
 class ControlBar extends Component {
@@ -59,6 +60,10 @@ class ControlBar extends Component {
       </div>
     )
   }
+}
+
+ControlBar.PropTypes = {
+  joinRoom: PropTypes.func
 }
 
 export default ControlBar

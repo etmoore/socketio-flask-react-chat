@@ -46,11 +46,14 @@ class App extends Component {
   }
 
   render () {
+    const {username, rooms} = this.state
     return (
       <div className='App'>
         <h1>Chat Server</h1>
         <ControlBar joinRoom={this.joinRoom} />
-        <Conversations />
+        <Conversations
+          rooms={rooms}
+          username={username}/>
       </div>
     )
   }
