@@ -26,10 +26,6 @@ class App extends Component {
     socket.on('connect', () => {
       console.log('Client connected!')
     })
-    socket.on('message_receive', (data) => {
-      const textNode = document.createTextNode(data.message)
-      document.getElementById('log').appendChild(textNode)
-    })
     socket.on('message', (data) => {
       console.log(data.message)
     })
