@@ -14,17 +14,12 @@ class App extends Component {
       rooms: []
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.joinRoom = this.joinRoom.bind(this)
   }
 
   handleChange (event) {
-    this.setState({ message: event.target.value })
-  }
-
-  handleSubmit (event) {
-    event.preventDefault()
-    socket.emit('message_send', {message: this.state.message})
+    const {name, value} = event.target
+    this.setState({ [name]: value })
   }
 
   componentDidMount () {
@@ -56,16 +51,6 @@ class App extends Component {
         <h1>Chat Server</h1>
         <ControlBar joinRoom={this.joinRoom} />
         <Conversations />
-        <form action='#' method='POST' onSubmit={this.handleSubmit}>
-          <label>
-            Message:
-            <input type='text'
-                   onChange={this.handleChange}
-                   value={this.state.message} />
-          </label>
-          <input type='submit' value='Send' />
-        </form>
-        <div id='log' />
       </div>
     )
   }
