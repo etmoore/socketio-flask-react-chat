@@ -11,6 +11,7 @@ class App extends Component {
     super(props)
     this.state = {
       username: '',
+      activeUsers: [],
       rooms: [],
       messages: []
     }
@@ -18,11 +19,18 @@ class App extends Component {
     this.joinRoom = this.joinRoom.bind(this)
     this.leaveRoom = this.leaveRoom.bind(this)
     this.sendChat = this.sendChat.bind(this)
+    this.setUsername = this.setUsername.bind(this)
   }
 
   handleChange (event) {
     const {name, value} = event.target
     this.setState({ [name]: value })
+  }
+
+  setUsername (username) {
+    this.setState({ username }, () => {
+      socket.emit('active_user', { username: this.state.username })
+    })
   }
 
   componentDidMount () {
@@ -36,10 +44,22 @@ class App extends Component {
       console.log(data)
       this.setState({ messages: [...this.state.messages, data] })
     })
+    socket.on('whos_there', () => {
+      console.log('server: whos there?')
+      if (this.state.username){
+        socket.emit('active_user', { username: this.state.username })
+      }
+    })
+    socket.on('register_user', (data) => {
+      const user = data['user']
+      const {activeUsers} = this.state
+      if (activeUsers.indexOf(user) === -1 && user !== this.state.username) {
+        this.setState({ activeUsers: [...activeUsers, user] })
+      }
+    })
   }
 
   joinRoom (username, partner) {
-    this.setState({username: username})
     const room = [username, partner].sort().join('|')
     socket.emit(
       'join_room',
@@ -73,7 +93,10 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>Chat Server</h1>
-        <ControlBar joinRoom={this.joinRoom} />
+        <ControlBar
+          activeUsers={this.state.activeUsers}
+          setUsername={this.setUsername}
+          joinRoom={this.joinRoom} />
         <Conversations
           rooms={rooms}
           messages={messages}

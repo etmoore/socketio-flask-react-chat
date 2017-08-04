@@ -11,7 +11,14 @@ CORS(app)
 @socket.on('connect')
 def on_connect():
     print('user connected')
-    send({'message': 'Hello from the server'})
+    emit('whos_there', broadcast=True)
+
+
+@socket.on('active_user')
+def on_active_user(data):
+    print('DATA in ON_ACTIVE_USER', data)
+    user = data.get('username')
+    emit('register_user', {'user': user}, broadcast=True)
 
 
 @socket.on('disconnect')

@@ -12,6 +12,7 @@ class ControlBar extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
   }
 
   handleSubmit (event) {
@@ -24,10 +25,18 @@ class ControlBar extends Component {
 
   handleChange (event) {
     const {name, value} = event.target
-    this.setState({ [name]: value})
+    this.setState({ [name]: value })
+  }
+
+  handleBlur (event) {
+    const username = this.state.username
+    this.props.setUsername(username)
   }
 
   render () {
+    const usersList = this.props.activeUsers.map((user, i) => {
+      return <option key={i} value={user}>{user}</option>
+    })
     return (
       <div className='ControlBar'>
 
@@ -37,6 +46,7 @@ class ControlBar extends Component {
             <input
               name='username'
               onChange={this.handleChange}
+              onBlur={this.handleBlur}
               type='text'
               placeholder='e.g. evmo' />
           </label>
@@ -48,10 +58,7 @@ class ControlBar extends Component {
               onChange={this.handleChange}
               value={this.state.partner}>
               <option value=''>Select a user...</option>
-              <option value='Tom'>Tom</option>
-              <option value='WillC'>WillC</option>
-              <option value='Po'>Po</option>
-              <option value='evmo'>evmo</option>
+              {usersList}
             </select>
           </label>
           <input type='submit' value='Chat' />
@@ -63,7 +70,9 @@ class ControlBar extends Component {
 }
 
 ControlBar.PropTypes = {
-  joinRoom: PropTypes.func
+  joinRoom: PropTypes.func,
+  activeUsers: PropTypes.arrayOf(PropTypes.string),
+  setUsername: PropTypes.func
 }
 
 export default ControlBar
