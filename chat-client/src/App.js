@@ -33,7 +33,14 @@ class App extends Component {
     })
   }
 
-  componentDidMount () {
+  loadMessages () {
+    const savedMessages = window.localStorage.getItem('messages')
+    if (savedMessages) {
+      this.setState({ messages: JSON.parse(savedMessages) || [] })
+    }
+  }
+
+  setSocketListeners () {
     socket.on('connect', () => {
       console.log('Client connected!')
     })
@@ -41,12 +48,12 @@ class App extends Component {
       console.log(data.message)
     })
     socket.on('chat_received', (data) => {
-      console.log(data)
-      this.setState({ messages: [...this.state.messages, data] })
+      this.setState({ messages: [...this.state.messages, data] }, () => {
+        window.localStorage.setItem('messages', JSON.stringify(this.state.messages))
+      })
     })
     socket.on('whos_there', () => {
-      console.log('server: whos there?')
-      if (this.state.username){
+      if (this.state.username) {
         socket.emit('active_user', { username: this.state.username })
       }
     })
@@ -86,6 +93,11 @@ class App extends Component {
         timeStamp: Date.now()
       }
     )
+  }
+
+  componentDidMount () {
+    this.loadMessages()
+    this.setSocketListeners()
   }
 
   render () {

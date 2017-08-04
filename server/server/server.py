@@ -16,7 +16,6 @@ def on_connect():
 
 @socket.on('active_user')
 def on_active_user(data):
-    print('DATA in ON_ACTIVE_USER', data)
     user = data.get('username')
     emit('register_user', {'user': user}, broadcast=True)
 
