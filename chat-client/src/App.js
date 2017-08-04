@@ -34,7 +34,6 @@ class App extends Component {
     socket.on('chat_received', (data) => {
       console.log(data)
       this.setState({ messages: [...this.state.messages, data] })
-      document.getElementById('log').appendChild(document.createTextNode(data.message))
     })
   }
 
@@ -53,24 +52,24 @@ class App extends Component {
       'chat_sent',
       {
         room,
-        username: this.state.username,
-        message,
+        from: this.state.username,
+        body: message,
         timeStamp: Date.now()
       }
     )
   }
 
   render () {
-    const {username, rooms} = this.state
+    const {username, rooms, messages} = this.state
     return (
       <div className='App'>
         <h1>Chat Server</h1>
         <ControlBar joinRoom={this.joinRoom} />
         <Conversations
           rooms={rooms}
+          messages={messages}
           username={username}
           sendChat={this.sendChat} />
-        <div id='log' />
       </div>
     )
   }

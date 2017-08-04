@@ -10,6 +10,7 @@ CORS(app)
 
 @socket.on('connect')
 def on_connect():
+    print('user connected')
     send({'message': 'Hello from the server'})
 
 

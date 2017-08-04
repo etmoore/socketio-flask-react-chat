@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Message from './Message'
 
 class Chat extends Component {
   constructor (props) {
@@ -22,15 +23,21 @@ class Chat extends Component {
   }
 
   render () {
-    const {partner} = this.props
+    const {partner, messages} = this.props
+    const chats = messages.map((message, i) => {
+      return (
+        <Message
+          message={message}
+          key={i} />
+      )
+    })
     return (
       <div className='chat'>
         <div className='chat-header'>
           <h2>{partner}</h2>
         </div>
         <div className='chat-body'>
-          <p><strong>WillC:</strong> Hey Po!</p>
-          <p><strong>PoShen: </strong> Hey Will, what's up?</p>
+          {chats}
         </div>
         <div className='chat-input'>
           <form onSubmit={this.handleSubmit}>
@@ -50,6 +57,12 @@ Chat.PropTypes = {
   username: PropTypes.string,
   partner: PropTypes.string,
   room: PropTypes.string,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    from: PropTypes.string,
+    body: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
+    room: PropTypes.string
+  })),
   sendChat: PropTypes.func
 }
 
