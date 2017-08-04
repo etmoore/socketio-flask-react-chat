@@ -45,9 +45,6 @@ class App extends Component {
   }
 
   setSocketListeners () {
-    socket.on('connect', () => {
-      console.log('Client connected!')
-    })
     socket.on('message', (data) => {
       console.log(data.message)
     })
