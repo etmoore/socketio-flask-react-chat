@@ -8,5 +8,6 @@ setup(
         'flask',
         'flask-socketio',
         'flask-cors',
+        'eventlet',
     ],
 )

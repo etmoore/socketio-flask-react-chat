@@ -11,10 +11,12 @@ class App extends Component {
     super(props)
     this.state = {
       username: '',
-      rooms: []
+      rooms: [],
+      messages: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.joinRoom = this.joinRoom.bind(this)
+    this.sendChat = this.sendChat.bind(this)
   }
 
   handleChange (event) {
@@ -29,6 +31,11 @@ class App extends Component {
     socket.on('message', (data) => {
       console.log(data.message)
     })
+    socket.on('chat_received', (data) => {
+      console.log(data)
+      this.setState({ messages: [...this.state.messages, data] })
+      document.getElementById('log').appendChild(document.createTextNode(data.message))
+    })
   }
 
   joinRoom (username, partner) {
@@ -41,6 +48,18 @@ class App extends Component {
     )
   }
 
+  sendChat (message, room) {
+    socket.emit(
+      'chat_sent',
+      {
+        room,
+        username: this.state.username,
+        message,
+        timeStamp: Date.now()
+      }
+    )
+  }
+
   render () {
     const {username, rooms} = this.state
     return (
@@ -49,7 +68,9 @@ class App extends Component {
         <ControlBar joinRoom={this.joinRoom} />
         <Conversations
           rooms={rooms}
-          username={username}/>
+          username={username}
+          sendChat={this.sendChat} />
+        <div id='log' />
       </div>
     )
   }

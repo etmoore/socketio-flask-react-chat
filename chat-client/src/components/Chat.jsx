@@ -2,6 +2,25 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class Chat extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { message: '' }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit (event) {
+    event.preventDefault()
+    if (this.state.message) {
+      this.props.sendChat(this.state.message, this.props.room)
+    }
+  }
+
+  handleChange (event) {
+    const {name, value} = event.target
+    this.setState({ [name]: value })
+  }
+
   render () {
     const {partner} = this.props
     return (
@@ -14,7 +33,13 @@ class Chat extends Component {
           <p><strong>PoShen: </strong> Hey Will, what's up?</p>
         </div>
         <div className='chat-input'>
-          <input type='text' name='chat-message' />
+          <form onSubmit={this.handleSubmit}>
+            <input
+              type='text'
+              name='message'
+              value={this.state.message}
+              onChange={this.handleChange}/>
+          </form>
         </div>
       </div>
     )
@@ -24,7 +49,8 @@ class Chat extends Component {
 Chat.PropTypes = {
   username: PropTypes.string,
   partner: PropTypes.string,
-  room: PropTypes.string
+  room: PropTypes.string,
+  sendChat: PropTypes.func
 }
 
 export default Chat

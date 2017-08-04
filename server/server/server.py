@@ -36,7 +36,7 @@ def on_leave(data):
     send(username + ' has left the room:' + room, room=room)
 
 
-@socket.on('message_send')
-def on_message_send(data):
-    print(data)
-    emit('message_receive', {'message': data['message']})
+@socket.on('chat_sent')
+def on_chat_sent(data):
+    room = data['room']
+    emit('chat_received', data, room=room)

@@ -15,7 +15,7 @@ class Conversations extends Component {
   }
 
   render () {
-    const {username, rooms} = this.props
+    const {username, rooms, sendChat} = this.props
     const chatWindows = rooms.map((room, i) => {
       const partner = this.getPartnerName(room)
       return (
@@ -23,7 +23,8 @@ class Conversations extends Component {
           key={i}
           room={room}
           username={username}
-          partner={partner} />
+          partner={partner}
+          sendChat={sendChat}/>
       )
     })
     return (
@@ -38,7 +39,7 @@ class Conversations extends Component {
 
 Conversations.PropTypes = {
   username: PropTypes.string,
-  rooms: PropTypes.arrayOf(PropTypes.string),
+  rooms: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default Conversations
