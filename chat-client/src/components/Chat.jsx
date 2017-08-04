@@ -8,6 +8,7 @@ class Chat extends Component {
     this.state = { message: '' }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.closeWindow = this.closeWindow.bind(this)
   }
 
   handleSubmit (event) {
@@ -20,6 +21,11 @@ class Chat extends Component {
   handleChange (event) {
     const {name, value} = event.target
     this.setState({ [name]: value })
+  }
+
+  closeWindow (event) {
+    const {room, username} = this.props
+    this.props.leaveRoom(room, username)
   }
 
   render () {
@@ -35,6 +41,7 @@ class Chat extends Component {
       <div className='chat'>
         <div className='chat-header'>
           <h2>{partner}</h2>
+          <button onClick={this.closeWindow}>X</button>
         </div>
         <div className='chat-body'>
           {chats}
@@ -63,7 +70,8 @@ Chat.PropTypes = {
     timestamp: PropTypes.instanceOf(Date),
     room: PropTypes.string
   })),
-  sendChat: PropTypes.func
+  sendChat: PropTypes.func,
+  leaveRoom: PropTypes.func
 }
 
 export default Chat

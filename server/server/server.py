@@ -34,7 +34,7 @@ def on_leave(data):
     username = data['username']
     room = data['room']
     leave_room(room)
-    send(username + ' has left the room:' + room, room=room)
+    send({'message': username + ' has left the room:' + room}, room=room)
 
 
 @socket.on('chat_sent')

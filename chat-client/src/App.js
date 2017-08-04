@@ -16,6 +16,7 @@ class App extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.joinRoom = this.joinRoom.bind(this)
+    this.leaveRoom = this.leaveRoom.bind(this)
     this.sendChat = this.sendChat.bind(this)
   }
 
@@ -47,6 +48,14 @@ class App extends Component {
     )
   }
 
+  leaveRoom (room, username) {
+    socket.emit(
+      'leave_room',
+      { room, username },
+      () => this.setState({ rooms: this.state.rooms.filter((r) => r !== room) })
+    )
+  }
+
   sendChat (message, room) {
     socket.emit(
       'chat_sent',
@@ -69,6 +78,7 @@ class App extends Component {
           rooms={rooms}
           messages={messages}
           username={username}
+          leaveRoom={this.leaveRoom}
           sendChat={this.sendChat} />
       </div>
     )
