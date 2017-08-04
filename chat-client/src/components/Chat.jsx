@@ -15,6 +15,7 @@ class Chat extends Component {
     event.preventDefault()
     if (this.state.message) {
       this.props.sendChat(this.state.message, this.props.room)
+      this.setState({ message: '' })
     }
   }
 
@@ -51,8 +52,9 @@ class Chat extends Component {
             <input
               type='text'
               name='message'
+              id='message'
               value={this.state.message}
-              onChange={this.handleChange}/>
+              onChange={this.handleChange} />
           </form>
         </div>
       </div>
