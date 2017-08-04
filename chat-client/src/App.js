@@ -28,6 +28,10 @@ class App extends Component {
   }
 
   setUsername (username) {
+    const oldName = this.state.username
+    if (oldName && oldName !== username) {
+      socket.emit('inactive_user', { username: oldName })
+    }
     this.setState({ username }, () => {
       socket.emit('active_user', { username: this.state.username })
     })
@@ -59,9 +63,19 @@ class App extends Component {
     })
     socket.on('register_user', (data) => {
       const user = data['user']
-      const {activeUsers} = this.state
+      const { activeUsers } = this.state
       if (activeUsers.indexOf(user) === -1 && user !== this.state.username) {
         this.setState({ activeUsers: [...activeUsers, user] })
+      }
+    })
+    socket.on('unregister_user', (data) => {
+      const inactiveUser = data['user']
+      const { activeUsers } = this.state
+      console.log('activeUsers', activeUsers, 'inactiveUser', inactiveUser)
+      if (activeUsers.indexOf(inactiveUser) !== -1) {
+        this.setState({ activeUsers: activeUsers.filter((user) => {
+          return user !== inactiveUser
+        })})
       }
     })
   }

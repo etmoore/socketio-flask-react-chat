@@ -20,6 +20,12 @@ def on_active_user(data):
     emit('register_user', {'user': user}, broadcast=True)
 
 
+@socket.on('inactive_user')
+def on_inactive_user(data):
+    user = data.get('username')
+    emit('unregister_user', {'user': user}, broadcast=True)
+
+
 @socket.on('disconnect')
 def on_disconnect():
     print('user disconnected')
