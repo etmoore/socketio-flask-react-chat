@@ -48,16 +48,19 @@ class App extends Component {
     socket.on('message', (data) => {
       console.log(data.message)
     })
+
     socket.on('chat_received', (data) => {
       this.setState({ messages: [...this.state.messages, data] }, () => {
         window.localStorage.setItem('messages', JSON.stringify(this.state.messages))
       })
     })
-    socket.on('whos_there', () => {
+
+    socket.on('retrieve_active_users', () => {
       if (this.state.username) {
         socket.emit('active_user', { username: this.state.username })
       }
     })
+
     socket.on('register_user', (data) => {
       const user = data['user']
       const { activeUsers } = this.state
@@ -65,16 +68,17 @@ class App extends Component {
         this.setState({ activeUsers: [...activeUsers, user] })
       }
     })
+
     socket.on('unregister_user', (data) => {
       const inactiveUser = data['user']
       const { activeUsers } = this.state
-      console.log('activeUsers', activeUsers, 'inactiveUser', inactiveUser)
       if (activeUsers.indexOf(inactiveUser) !== -1) {
         this.setState({ activeUsers: activeUsers.filter((user) => {
           return user !== inactiveUser
         })})
       }
     })
+
     socket.on('open_room', (data) => {
       const room = data['room']
       const openRooms = this.state.rooms
@@ -106,7 +110,7 @@ class App extends Component {
       'chat_sent',
       {
         room,
-        from: this.state.username,
+        author: this.state.username,
         body: message,
         timeStamp: Date.now()
       }
