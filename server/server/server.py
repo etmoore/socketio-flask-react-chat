@@ -34,11 +34,9 @@ def on_disconnect():
 
 @socket.on('join_room')
 def on_join(data):
-    username = data['username']
     room = data['room']
     join_room(room)
-    send({'message': username + ' has entered the room:' + room},
-         room=room)
+    emit('open_room', {'room': room}, broadcast=True)
 
 
 @socket.on('leave_room')

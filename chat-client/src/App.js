@@ -78,15 +78,22 @@ class App extends Component {
         })})
       }
     })
+    socket.on('open_room', (data) => {
+      const room = data['room']
+      const openRooms = this.state.rooms
+      const userInRoom = room.split('|').indexOf(this.state.username) !== -1
+      const roomNotOpen = openRooms.indexOf(room) === -1
+      if (userInRoom && roomNotOpen) {
+        this.setState({ rooms: [...openRooms, room] })
+      }
+    })
   }
 
   joinRoom (username, partner) {
     const room = [username, partner].sort().join('|')
-    socket.emit(
-      'join_room',
-      { username, room },
-      () => this.setState({rooms: [...this.state.rooms, room]})
-    )
+    this.setState({rooms: [...this.state.rooms, room]}, () => {
+      socket.emit('join_room', { username, room })
+    })
   }
 
   leaveRoom (room, username) {
