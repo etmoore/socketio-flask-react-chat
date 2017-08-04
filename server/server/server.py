@@ -26,12 +26,6 @@ def on_inactive_user(data):
     emit('unregister_user', {'user': user}, broadcast=True)
 
 
-@socket.on('disconnect')
-def on_disconnect():
-    print('user disconnected')
-    send({'message': 'User disconnected from the server'})
-
-
 @socket.on('join_room')
 def on_join(data):
     room = data['room']
