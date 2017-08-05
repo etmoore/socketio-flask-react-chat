@@ -30,10 +30,10 @@ class App extends Component {
   setUsername (username) {
     const oldName = this.state.username
     if (oldName && oldName !== username) {
-      socket.emit('inactive_user', { username: oldName })
+      socket.emit('deactivate_user', { username: oldName })
     }
     this.setState({ username }, () => {
-      socket.emit('active_user', { username: this.state.username })
+      socket.emit('activate_user', { username: this.state.username })
     })
   }
 
@@ -57,11 +57,11 @@ class App extends Component {
 
     socket.on('retrieve_active_users', () => {
       if (this.state.username) {
-        socket.emit('active_user', { username: this.state.username })
+        socket.emit('activate_user', { username: this.state.username })
       }
     })
 
-    socket.on('register_user', (data) => {
+    socket.on('user_activated', (data) => {
       const user = data['user']
       const { activeUsers } = this.state
       if (activeUsers.indexOf(user) === -1 && user !== this.state.username) {
@@ -69,12 +69,12 @@ class App extends Component {
       }
     })
 
-    socket.on('unregister_user', (data) => {
-      const inactiveUser = data['user']
+    socket.on('user_deactivated', (data) => {
+      const deactivatedUser = data['user']
       const { activeUsers } = this.state
-      if (activeUsers.indexOf(inactiveUser) !== -1) {
+      if (activeUsers.indexOf(deactivatedUser) !== -1) {
         this.setState({ activeUsers: activeUsers.filter((user) => {
-          return user !== inactiveUser
+          return user !== deactivatedUser
         })})
       }
     })

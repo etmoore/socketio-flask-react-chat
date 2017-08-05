@@ -18,16 +18,16 @@ def on_connect():
     retrieve_active_users()
 
 
-@socket.on('active_user')
+@socket.on('activate_user')
 def on_active_user(data):
     user = data.get('username')
-    emit('register_user', {'user': user}, broadcast=True)
+    emit('user_activated', {'user': user}, broadcast=True)
 
 
-@socket.on('inactive_user')
+@socket.on('deactivate_user')
 def on_inactive_user(data):
     user = data.get('username')
-    emit('unregister_user', {'user': user}, broadcast=True)
+    emit('user_deactivated', {'user': user}, broadcast=True)
 
 
 @socket.on('join_room')
