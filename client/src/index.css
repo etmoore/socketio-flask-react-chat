@@ -42,6 +42,13 @@ h1 {
   margin: 0;
 }
 
+.ControlBar {
+  outline: 1px solid black;
+  padding: 10px 0px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
 .ControlBar form {
   display: flex;
   justify-content: space-around;
@@ -56,6 +63,7 @@ h1 {
   margin-left: 10px;
   width: 160px;
 }
+
 .Conversations {
   display: flex;
   flex-flow: row wrap;
@@ -67,17 +75,17 @@ h1 {
   flex: 0 1 48%;
   border: 1px solid black;
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .chat-header {
   display: flex;
   justify-content: space-between;
+  padding: 5px 10px;
 }
-
 .chat-header h2 {
   margin: 0;
 }
-
 .chat-header button {
   width: 28px;
 }
@@ -100,9 +108,3 @@ h1 {
   width: 95%;
   margin: 5px;
 }
-
-.ControlBar {
-  outline: 1px solid black;
-  padding: 5px 10px;
-}
-
