@@ -95,11 +95,6 @@ h1 {
   height: 200px;
 }
 
-.chat-header, .chat-body, .chat-input {
-  /* border: 1px solid black; */
-  padding: 0 10px;
-}
-
 .chat-input {
   border-top: 1px solid black;
 }
