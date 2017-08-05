@@ -46,7 +46,15 @@ class Conversations extends Component {
 
 Conversations.PropTypes = {
   username: PropTypes.string,
-  rooms: PropTypes.arrayOf(PropTypes.string)
+  rooms: PropTypes.arrayOf(PropTypes.string),
+  sendMessage: PropTypes.func,
+  leaveRoom: PropTypes.func,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    from: PropTypes.string,
+    body: PropTypes.string,
+    timestamp: PropTypes.instanceOf(Date),
+    room: PropTypes.string
+  }))
 }
 
 export default Conversations
