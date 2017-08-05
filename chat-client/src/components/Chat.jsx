@@ -39,7 +39,7 @@ class Chat extends Component {
       )
     })
     return (
-      <div className='chat'>
+      <div className='Chat'>
         <div className='chat-header'>
           <h2>{partner}</h2>
           <button onClick={this.closeWindow}>X</button>

@@ -27,12 +27,13 @@ h1 {
 
 .Conversations {
   display: flex;
-  margin-top: 20px;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.chat {
-  flex: 0 1 45%;
+.Chat {
+  margin-top: 20px;
+  flex: 0 1 48%;
 }
 
 .chat-header, .chat-body, .chat-input {
