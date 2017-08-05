@@ -33,6 +33,16 @@
   padding: 5px 10px;
 }
 
+.ControlBar form {
+  display: flex;
+  justify-content: space-around;
+}
+
+#username-input {
+  margin-left: 10px;
+  min-width: 180px;
+}
+
 #username {
   margin-left: 4px;
 }

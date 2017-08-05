@@ -43,6 +43,7 @@ class ControlBar extends Component {
           <label>
             Username:
             <input
+              id='username-input'
               name='username'
               onChange={this.handleChange}
               onBlur={this.handleBlur}
