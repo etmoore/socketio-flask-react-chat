@@ -8,14 +8,14 @@ socket = SocketIO(app)
 CORS(app)
 
 
-def retrieve_active_users():
-    emit('retrieve_active_users', broadcast=True)
-
-
 @socket.on('connect')
 def on_connect():
     print('user connected')
     retrieve_active_users()
+
+
+def retrieve_active_users():
+    emit('retrieve_active_users', broadcast=True)
 
 
 @socket.on('activate_user')
