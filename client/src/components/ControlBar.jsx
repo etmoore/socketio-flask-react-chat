@@ -62,7 +62,7 @@ class ControlBar extends Component {
               {usersList}
             </select>
           </label>
-          <input type='submit' value='Chat' />
+          <button type='submit'>Chat</button>
         </form>
 
       </div>
