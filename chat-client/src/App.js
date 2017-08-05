@@ -18,7 +18,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.joinRoom = this.joinRoom.bind(this)
     this.leaveRoom = this.leaveRoom.bind(this)
-    this.sendChat = this.sendChat.bind(this)
+    this.sendMessage = this.sendMessage.bind(this)
     this.setUsername = this.setUsername.bind(this)
   }
 
@@ -49,7 +49,7 @@ class App extends Component {
       console.log(data.message)
     })
 
-    socket.on('chat_received', (data) => {
+    socket.on('message_sent', (data) => {
       this.setState({ messages: [...this.state.messages, data] }, () => {
         window.localStorage.setItem('messages', JSON.stringify(this.state.messages))
       })
@@ -105,12 +105,12 @@ class App extends Component {
     )
   }
 
-  sendChat (message, room) {
+  sendMessage (message, room) {
     socket.emit(
-      'chat_sent',
+      'send_message',
       {
         room,
-        author: this.state.username,
+        from: this.state.username,
         body: message,
         timeStamp: Date.now()
       }
@@ -136,7 +136,7 @@ class App extends Component {
           messages={messages}
           username={username}
           leaveRoom={this.leaveRoom}
-          sendChat={this.sendChat} />
+          sendMessage={this.sendMessage} />
       </div>
     )
   }

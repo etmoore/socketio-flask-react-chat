@@ -14,7 +14,7 @@ class Chat extends Component {
   handleSubmit (event) {
     event.preventDefault()
     if (this.state.message) {
-      this.props.sendChat(this.state.message, this.props.room)
+      this.props.sendMessage(this.state.message, this.props.room)
       this.setState({ message: '' })
     }
   }
@@ -72,7 +72,7 @@ Chat.PropTypes = {
     timestamp: PropTypes.instanceOf(Date),
     room: PropTypes.string
   })),
-  sendChat: PropTypes.func,
+  sendMessage: PropTypes.func,
   leaveRoom: PropTypes.func
 }
 

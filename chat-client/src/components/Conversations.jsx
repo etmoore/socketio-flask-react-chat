@@ -21,7 +21,7 @@ class Conversations extends Component {
   }
 
   render () {
-    const {username, rooms, leaveRoom, sendChat, messages} = this.props
+    const {username, rooms, leaveRoom, sendMessage, messages} = this.props
     const chatWindows = rooms.map((room, i) => {
       const roomMessages = this.filterMessages(messages, room)
       const partner = this.getPartnerName(room)
@@ -33,7 +33,7 @@ class Conversations extends Component {
           partner={partner}
           messages={roomMessages}
           leaveRoom={leaveRoom}
-          sendChat={sendChat} />
+          sendMessage={sendMessage} />
       )
     })
     return (
