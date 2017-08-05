@@ -110,7 +110,7 @@ class App extends Component {
       'send_message',
       {
         room,
-        from: this.state.username,
+        author: this.state.username,
         body: message,
         timeStamp: Date.now()
       }

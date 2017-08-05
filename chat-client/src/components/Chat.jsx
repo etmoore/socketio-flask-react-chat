@@ -67,7 +67,7 @@ Chat.PropTypes = {
   partner: PropTypes.string,
   room: PropTypes.string,
   messages: PropTypes.arrayOf(PropTypes.shape({
-    from: PropTypes.string,
+    author: PropTypes.string,
     body: PropTypes.string,
     timestamp: PropTypes.instanceOf(Date),
     room: PropTypes.string

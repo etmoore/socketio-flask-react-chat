@@ -50,7 +50,7 @@ Conversations.PropTypes = {
   sendMessage: PropTypes.func,
   leaveRoom: PropTypes.func,
   messages: PropTypes.arrayOf(PropTypes.shape({
-    from: PropTypes.string,
+    author: PropTypes.string,
     body: PropTypes.string,
     timestamp: PropTypes.instanceOf(Date),
     room: PropTypes.string
