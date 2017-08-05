@@ -85,13 +85,13 @@ class App extends Component {
       const userInRoom = room.split('|').indexOf(this.state.username) !== -1
       const roomNotOpen = openRooms.indexOf(room) === -1
       if (userInRoom && roomNotOpen) {
-        this.setState({ rooms: [...openRooms, room] })
+        this.joinRoom(room, this.state.username)
       }
     })
   }
 
-  joinRoom (username, partner) {
-    const room = [username, partner].sort().join('|')
+  joinRoom (room, username, partner) {
+    room = room || [username, partner].sort().join('|')
     this.setState({rooms: [...this.state.rooms, room]}, () => {
       socket.emit('join_room', { username, room })
     })

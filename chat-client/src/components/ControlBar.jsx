@@ -19,7 +19,7 @@ class ControlBar extends Component {
     event.preventDefault()
     const {username, partner} = this.state
     if (username && partner) {
-      this.props.joinRoom(username, partner)
+      this.props.joinRoom(null, username, partner)
     }
   }
 
