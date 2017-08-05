@@ -31,7 +31,7 @@ class Chat extends Component {
 
   render () {
     const {partner, messages} = this.props
-    const chats = messages.map((message, i) => {
+    const messageList = messages.map((message, i) => {
       return (
         <Message
           message={message}
@@ -45,7 +45,7 @@ class Chat extends Component {
           <button onClick={this.closeWindow}>X</button>
         </div>
         <div className='chat-body'>
-          {chats}
+          {messageList}
         </div>
         <div className='chat-input'>
           <form onSubmit={this.handleSubmit}>
