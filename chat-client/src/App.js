@@ -125,7 +125,10 @@ class App extends Component {
     const {username, rooms, messages} = this.state
     return (
       <div className='App'>
-        <h1>Chat Server</h1>
+        <div className="header">
+          <img className='logo' src='smiling-cat.png' alt='logo' />
+          <h1>Le Chat</h1>
+        </div>
         <ControlBar
           activeUsers={this.state.activeUsers}
           setUsername={this.setUsername}

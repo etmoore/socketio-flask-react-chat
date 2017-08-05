@@ -7,6 +7,23 @@
   margin: 0 auto;
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
 .Conversations {
   display: flex;
   margin-top: 20px;
