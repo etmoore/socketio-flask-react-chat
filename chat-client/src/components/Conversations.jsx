@@ -36,7 +36,7 @@ class Conversations extends Component {
       )
     })
     return (
-      <div className='conversations'>
+      <div className='Conversations'>
         {chatWindows}
       </div>
     )

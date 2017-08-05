@@ -14,8 +14,7 @@
 }
 
 .chat {
-  flex: 0 1 auto;
-  width: 45%;
+  flex: 0 1 45%;
 }
 
 .chat-header, .chat-body, .chat-input {
