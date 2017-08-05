@@ -52,8 +52,9 @@ class ControlBar extends Component {
           </label>
 
           <label>
-            Start a Conversation:
+            Converse with:
             <select
+              id='partner-select'
               name='partner'
               onChange={this.handleChange}
               value={this.state.partner}>

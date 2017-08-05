@@ -59,6 +59,7 @@ h1 {
   min-width: 180px;
 }
 
-#username {
-  margin-left: 4px;
+#partner-select {
+  margin-left: 10px;
+  width: 160px;
 }
