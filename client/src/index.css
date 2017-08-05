@@ -40,6 +40,20 @@ h1 {
   margin: 0;
 }
 
+.ControlBar form {
+  display: flex;
+  justify-content: space-around;
+}
+
+#username-input {
+  margin-left: 10px;
+  min-width: 180px;
+}
+
+#partner-select {
+  margin-left: 10px;
+  width: 160px;
+}
 .Conversations {
   display: flex;
   flex-flow: row wrap;
@@ -90,17 +104,3 @@ h1 {
   padding: 5px 10px;
 }
 
-.ControlBar form {
-  display: flex;
-  justify-content: space-around;
-}
-
-#username-input {
-  margin-left: 10px;
-  min-width: 180px;
-}
-
-#partner-select {
-  margin-left: 10px;
-  width: 160px;
-}
