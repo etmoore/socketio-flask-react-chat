@@ -49,8 +49,8 @@ class App extends Component {
       console.log(data.message)
     })
 
-    socket.on('message_sent', (data) => {
-      this.setState({ messages: [...this.state.messages, data] }, () => {
+    socket.on('message_sent', (message) => {
+      this.setState({ messages: [...this.state.messages, message] }, () => {
         window.localStorage.setItem('messages', JSON.stringify(this.state.messages))
       })
     })
