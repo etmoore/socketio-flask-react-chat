@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Chat from './Chat'
+import ChatWindow from './ChatWindow'
 
 class Conversations extends Component {
   constructor (props) {
@@ -25,7 +25,7 @@ class Conversations extends Component {
       const roomMessages = this.filterMessages(messages, room)
       const partner = this.getPartnerName(room)
       return (
-        <Chat
+        <ChatWindow
           key={i}
           room={room}
           username={username}

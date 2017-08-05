@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Message from './Message'
 
-class Chat extends Component {
+class ChatWindow extends Component {
   constructor (props) {
     super(props)
     this.state = { message: '' }
@@ -39,7 +39,7 @@ class Chat extends Component {
       )
     })
     return (
-      <div className='Chat'>
+      <div className='ChatWindow'>
         <div className='chat-header'>
           <h2>{partner}</h2>
           <button onClick={this.closeWindow}>X</button>
@@ -62,7 +62,7 @@ class Chat extends Component {
   }
 }
 
-Chat.PropTypes = {
+ChatWindow.PropTypes = {
   username: PropTypes.string,
   partner: PropTypes.string,
   room: PropTypes.string,
@@ -76,4 +76,4 @@ Chat.PropTypes = {
   leaveRoom: PropTypes.func
 }
 
-export default Chat
+export default ChatWindow
