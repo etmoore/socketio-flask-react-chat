@@ -43,7 +43,7 @@ h1 {
 }
 
 .ControlBar {
-  outline: 1px solid black;
+  border: 1px solid black;
   padding: 10px 0px;
   overflow: hidden;
   border-radius: 4px;
