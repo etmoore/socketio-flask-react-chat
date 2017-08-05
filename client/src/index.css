@@ -34,11 +34,35 @@ h1 {
 .ChatWindow {
   margin-top: 20px;
   flex: 0 1 48%;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-header h2 {
+  margin: 0;
+}
+
+.chat-header button {
+  width: 28px;
+}
+
+.chat-body {
+  border-top: 1px solid black;
+  height: 200px;
 }
 
 .chat-header, .chat-body, .chat-input {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 0 10px;
+}
+
+.chat-input {
+  border-top: 1px solid black;
 }
 
 .chat-input input {
