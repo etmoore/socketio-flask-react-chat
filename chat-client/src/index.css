@@ -1,0 +1,34 @@
+.App {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.Conversations {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.chat {
+  flex: 0 1 auto;
+  width: 45%;
+}
+
+.chat-header, .chat-body, .chat-input {
+  border: 1px solid black;
+  padding: 0 10px;
+}
+
+.chat-input input {
+  width: 95%;
+  margin: 5px;
+}
+
+.ControlBar {
+  outline: 1px solid black;
+  padding: 5px 10px;
+}
+
+#username {
+  margin-left: 4px;
+}

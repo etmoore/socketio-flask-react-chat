@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import './ControlBar.css'
 
 class ControlBar extends Component {
   constructor (props) {

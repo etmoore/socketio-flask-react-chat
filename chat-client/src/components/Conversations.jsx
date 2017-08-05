@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Chat from './Chat'
-import './Conversations.css'
 
 class Conversations extends Component {
   constructor (props) {

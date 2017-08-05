@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 import ControlBar from './components/ControlBar'
 import Conversations from './components/Conversations'
 import io from 'socket.io-client'
