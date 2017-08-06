@@ -37,14 +37,6 @@ def on_join(data):
     emit('open_room', {'room': room}, broadcast=True)
 
 
-@socket.on('leave_room')
-def on_leave(data):
-    username = data['username']
-    room = data['room']
-    leave_room(room)
-    send({'message': username + ' has left the room:' + room}, room=room)
-
-
 @socket.on('send_message')
 def on_chat_sent(data):
     room = data['room']

@@ -97,11 +97,7 @@ class App extends Component {
   }
 
   leaveRoom (room, username) {
-    socket.emit(
-      'leave_room',
-      { room, username },
-      () => this.setState({ rooms: this.state.rooms.filter((r) => r !== room) })
-    )
+    this.setState({ rooms: this.state.rooms.filter((r) => r !== room) })
   }
 
   sendMessage (message, room) {
