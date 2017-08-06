@@ -49,8 +49,12 @@ class App extends Component {
     })
 
     socket.on('message_sent', (message) => {
+      const room = message['room']
       this.setState({ messages: [...this.state.messages, message] }, () => {
         window.localStorage.setItem('messages', JSON.stringify(this.state.messages))
+        if (this.state.rooms.indexOf(room) === -1) {
+          this.setState({ rooms: [...this.state.rooms, room] })
+        }
       })
     })
 
