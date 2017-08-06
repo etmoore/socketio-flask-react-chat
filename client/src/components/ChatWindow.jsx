@@ -29,6 +29,18 @@ class ChatWindow extends Component {
     this.props.leaveRoom(room, username)
   }
 
+  scrollToBottom () {
+    this.endOfMessages.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  componentDidUpdate () {
+    this.scrollToBottom()
+  }
+
+  componentDidMount () {
+    this.scrollToBottom()
+  }
+
   render () {
     const {partner, messages} = this.props
     const messageList = messages.map((message, i) => {
@@ -46,6 +58,8 @@ class ChatWindow extends Component {
         </div>
         <div className='chat-body'>
           {messageList}
+          <div style={{ float: 'left', clear: 'none' }}
+            ref={(el) => { this.endOfMessages = el }}/>
         </div>
         <div className='chat-input'>
           <form onSubmit={this.handleSubmit}>

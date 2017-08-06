@@ -111,6 +111,7 @@ button:hover {
   border-top: 1px solid #666;
   height: 200px;
   padding: 5px 10px;
+  overflow: scroll;
 }
 
 .chat-input {
