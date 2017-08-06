@@ -53,6 +53,7 @@ class ChatWindow extends Component {
               type='text'
               name='message'
               id='message'
+              placeholder='your message here...'
               value={this.state.message}
               onChange={this.handleChange} />
           </form>
