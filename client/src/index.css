@@ -117,7 +117,10 @@ button:hover {
   border-top: 1px solid #666;
 }
 
-.chat-input input {
-  width: 95%;
-  margin: 5px;
+.chat-input #message {
+  width: 100%;
+  border: 1px solid transparent;
+  padding: 5px 10px;
+  font-size: 1em;
+  appearance: none;
 }
