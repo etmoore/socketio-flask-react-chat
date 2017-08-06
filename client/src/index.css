@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Arimo', sans-serif;
   color: #666;
   background-color: #fdfdfd;
   outline-color: #4C39FF;
@@ -34,12 +34,14 @@ button:hover {
 }
 
 .logo {
-  width: 45px;
-  height: 45px;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
 }
 
 .title {
+  font-size: 2.80em;
+  font-family: 'Zilla Slab Highlight', sans-serif;
   text-align: center;
   margin: 0;
 }
