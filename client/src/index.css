@@ -59,27 +59,28 @@ button:hover {
 
 .ControlBar button {
   font-size: 1em;
-  padding: 5px 20px;
-}
-
-.ControlBar #partner-select {
-  font-size: 1em;
+  padding: 4px 20px;
   margin-left: 10px;
-  width: 160px;
-  border: 1px solid #666;
-  border-radius: 4px;
-  padding: 4px;
-  appearance: none;
 }
 
 .ControlBar #username-input {
   font-size: 1em;
   margin-left: 10px;
-  min-width: 180px;
+  width: 180px;
   background-color: transparent;
   border: 1px solid #666;
   padding: 4px;
   border-radius: 4px;
+}
+
+.ControlBar #partner-select {
+  font-size: 1em;
+  margin-left: 10px;
+  width: 180px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 4px;
+  appearance: none;
 }
 
 .Conversations {

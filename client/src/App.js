@@ -125,7 +125,7 @@ class App extends Component {
     const {username, rooms, messages} = this.state
     return (
       <div className='App'>
-        <div className="header">
+        <div className='header'>
           <img className='logo' src='smiling-cat.png' alt='logo' />
           <h1 className='title'>Le Chat</h1>
         </div>

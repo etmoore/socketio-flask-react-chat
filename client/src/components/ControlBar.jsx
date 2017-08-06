@@ -51,21 +51,23 @@ class ControlBar extends Component {
               placeholder='e.g. evmo' />
           </label>
 
-          <label>
-            Converse with:
-            <select
-              id='partner-select'
-              name='partner'
-              onChange={this.handleChange}
-              value={this.state.partner}>
-              <option value=''>Select a user...</option>
-              <option value='Dummy1'>Dummy1</option>
-              <option value='Dummy2'>Dummy2</option>
-              <option value='Dummy3'>Dummy3</option>
-              {usersList}
-            </select>
-          </label>
-          <button type='submit'>Chat</button>
+          <div>
+            <label>
+              Converse with:
+              <select
+                id='partner-select'
+                name='partner'
+                onChange={this.handleChange}
+                value={this.state.partner}>
+                <option value=''>Select a user...</option>
+                <option value='Dummy1'>Dummy1</option>
+                <option value='Dummy2'>Dummy2</option>
+                <option value='Dummy3'>Dummy3</option>
+                {usersList}
+              </select>
+            </label>
+            <button type='submit'>Chat</button>
+          </div>
         </form>
 
       </div>
