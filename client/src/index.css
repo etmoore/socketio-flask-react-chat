@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: sans-serif;
+  color: #666;
   background-color: #fdfdfd;
 }
 
@@ -43,7 +44,7 @@ button:hover {
 }
 
 .ControlBar {
-  border: 1px solid black;
+  border: 1px solid #666;
   padding: 10px 0px;
   overflow: hidden;
   border-radius: 4px;
@@ -64,7 +65,7 @@ button:hover {
   font-size: 1em;
   margin-left: 10px;
   width: 160px;
-  border: 1px solid black;
+  border: 1px solid #666;
   border-radius: 4px;
   padding: 4px;
   appearance: none;
@@ -75,7 +76,7 @@ button:hover {
   margin-left: 10px;
   min-width: 180px;
   background-color: transparent;
-  border: 1px solid black;
+  border: 1px solid #666;
   padding: 4px;
   border-radius: 4px;
 }
@@ -89,7 +90,7 @@ button:hover {
 .ChatWindow {
   margin-top: 20px;
   flex: 0 1 48%;
-  border: 1px solid black;
+  border: 1px solid #666;
   border-radius: 4px;
   overflow: hidden;
 }
@@ -107,12 +108,12 @@ button:hover {
 }
 
 .chat-body {
-  border-top: 1px solid black;
+  border-top: 1px solid #666;
   height: 200px;
 }
 
 .chat-input {
-  border-top: 1px solid black;
+  border-top: 1px solid #666;
 }
 
 .chat-input input {
