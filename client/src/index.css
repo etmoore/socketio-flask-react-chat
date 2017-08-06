@@ -62,20 +62,22 @@ button:hover {
 
 .ControlBar #partner-select {
   font-size: 1em;
+  margin-left: 10px;
+  width: 160px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 4px;
+  appearance: none;
 }
 
 .ControlBar #username-input {
   font-size: 1em;
-}
-
-#username-input {
   margin-left: 10px;
   min-width: 180px;
-}
-
-#partner-select {
-  margin-left: 10px;
-  width: 160px;
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 .Conversations {
