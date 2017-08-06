@@ -95,9 +95,11 @@ class App extends Component {
 
   joinRoom (room, username, partner) {
     room = room || [username, partner].sort().join('|')
-    this.setState({rooms: [...this.state.rooms, room]}, () => {
-      socket.emit('join_room', { username, room })
-    })
+    if (this.state.rooms.indexOf(room) === -1) {
+      this.setState({rooms: [...this.state.rooms, room]}, () => {
+        socket.emit('join_room', { username, room })
+      })
+    }
   }
 
   leaveRoom (room, username) {
