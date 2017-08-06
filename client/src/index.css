@@ -51,7 +51,21 @@ button:hover {
 
 .ControlBar form {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.ControlBar button {
+  font-size: 1em;
+  padding: 5px 20px;
+}
+
+.ControlBar #partner-select {
+  font-size: 1em;
+}
+
+.ControlBar #username-input {
+  font-size: 1em;
 }
 
 #username-input {
