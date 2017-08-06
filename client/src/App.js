@@ -127,7 +127,7 @@ class App extends Component {
       <div className='App'>
         <div className="header">
           <img className='logo' src='smiling-cat.png' alt='logo' />
-          <h1>Le Chat</h1>
+          <h1 className='title'>Le Chat</h1>
         </div>
         <ControlBar
           activeUsers={this.state.activeUsers}
