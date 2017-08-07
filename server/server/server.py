@@ -1,5 +1,5 @@
 from flask import Flask, send_from_directory
-from flask_socketio import SocketIO, emit, send, join_room, leave_room
+from flask_socketio import SocketIO, emit, join_room
 from flask_cors import CORS
 
 app = Flask(__name__, static_folder='../../client/build/static')
