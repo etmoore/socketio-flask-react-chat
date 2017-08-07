@@ -59,7 +59,7 @@ class ControlBar extends Component {
         <form onSubmit={this.handlePartnerSubmit}>
           <div>
             <label>
-              <strong>Converse with:</strong>
+              <strong>Partner:</strong>
               <select
                 id='partner-select'
                 name='partner'
