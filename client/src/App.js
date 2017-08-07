@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ControlBar from './components/ControlBar'
 import Conversations from './components/Conversations'
+import Flash from './components/Flash'
 import io from 'socket.io-client'
 import logo from './images/smiling-cat.png'
 
@@ -13,13 +14,16 @@ class App extends Component {
       username: '',
       activeUsers: [],
       rooms: [],
-      messages: []
+      messages: [],
+      flashNotice: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.joinRoom = this.joinRoom.bind(this)
     this.leaveRoom = this.leaveRoom.bind(this)
     this.sendMessage = this.sendMessage.bind(this)
     this.setUsername = this.setUsername.bind(this)
+    this.createFlash = this.createFlash.bind(this)
+    this.clearFlash = this.clearFlash.bind(this)
   }
 
   handleChange (event) {
@@ -69,7 +73,9 @@ class App extends Component {
       const user = data['user']
       const { activeUsers } = this.state
       if (activeUsers.indexOf(user) === -1 && user !== this.state.username) {
-        this.setState({ activeUsers: [...activeUsers, user] })
+        this.setState({ activeUsers: [...activeUsers, user] }, () => {
+          this.createFlash(`${user} is online`)
+        })
       }
     })
 
@@ -119,22 +125,39 @@ class App extends Component {
     )
   }
 
+  createFlash (text) {
+    this.setState({flashNotice: ''}, () => {
+      this.setState({flashNotice: text}, () => {
+        window.setTimeout(this.clearFlash, 2900)
+      })
+    })
+  }
+
+  clearFlash () {
+    this.setState({flashNotice: ''})
+  }
+
   componentDidMount () {
     this.loadMessages()
     this.setSocketListeners()
   }
 
   render () {
-    const {username, rooms, messages} = this.state
+    const {username, rooms, messages, flashNotice} = this.state
+
     return (
       <div className='App'>
         <div className='header'>
           <img className='logo' src={logo} alt='logo' />
           <h1 className='title'>Le Chat</h1>
         </div>
+        {flashNotice &&
+          <Flash notice={flashNotice} />
+        }
         <ControlBar
           activeUsers={this.state.activeUsers}
           setUsername={this.setUsername}
+          createFlash={this.createFlash}
           joinRoom={this.joinRoom} />
         <Conversations
           rooms={rooms}
