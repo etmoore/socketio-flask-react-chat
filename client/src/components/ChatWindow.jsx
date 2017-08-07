@@ -31,7 +31,7 @@ class ChatWindow extends Component {
   }
 
   scrollToBottom () {
-    this.endOfMessages.scrollIntoView({ behavior: 'smooth' })
+    this.messageWindow.scrollTop = this.messageWindow.scrollHeight
   }
 
   componentDidUpdate () {
@@ -57,10 +57,8 @@ class ChatWindow extends Component {
           <h2>{partner}</h2>
           <button onClick={this.closeWindow}>X</button>
         </div>
-        <div className='chat-body'>
+        <div className='chat-body' ref={(el) => { this.messageWindow = el }}>
           {messageList}
-          <div style={{ float: 'left', clear: 'none' }}
-            ref={(el) => { this.endOfMessages = el }}/>
         </div>
         <div className='chat-input'>
           <form onSubmit={this.handleSubmit}>
