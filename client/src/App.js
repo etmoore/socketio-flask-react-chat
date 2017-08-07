@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ControlBar from './components/ControlBar'
 import Conversations from './components/Conversations'
 import io from 'socket.io-client'
+import logo from './images/smiling-cat.png'
 
 const socket = io('http://localhost:5000')
 
@@ -128,7 +129,7 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='header'>
-          <img className='logo' src='smiling-cat.png' alt='logo' />
+          <img className='logo' src={logo} alt='logo' />
           <h1 className='title'>Le Chat</h1>
         </div>
         <ControlBar
