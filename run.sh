@@ -4,7 +4,9 @@ cd client
 if [ ! -d "./node_modules" ]; then
   npm install
 fi
-npm run-script build
+if [ ! -d "./build" ]; then
+  npm run-script build
+fi
 
 cd ../server
 if [ -x "$(command -v pip3)" ]; then # if pip3 executable exists in PATH
