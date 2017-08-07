@@ -3,7 +3,7 @@
   font-family: 'Arimo', sans-serif;
   color: #666;
   background-color: #fdfdfd;
-  outline-color: #4C39FF;
+  outline-color: #18D084;
 }
 
 .App {
@@ -21,9 +21,9 @@ button {
 }
 
 button:hover {
-  background-color: #666;
+  background-color: rgb(87, 64, 255);
   color: #fff;
-  border-color: #000;
+  border-color: rgb(87, 64, 255);
 }
 
 .header {
@@ -40,10 +40,15 @@ button:hover {
 }
 
 .title {
+  color: rgb(87, 64, 255);
   font-size: 2.80em;
   font-family: 'Zilla Slab Highlight', sans-serif;
   text-align: center;
   margin: 0;
+}
+
+::placeholder {
+  color: #b2b2b2
 }
 
 .ControlBar {
@@ -56,19 +61,13 @@ button:hover {
 .ControlBar form {
   display: flex;
   justify-content: space-evenly;
-  align-items: baseline;
-}
-
-.ControlBar button {
-  font-size: 1em;
-  padding: 4px 20px;
-  margin-left: 10px;
 }
 
 .ControlBar #username-input {
   font-size: 1em;
   margin-left: 10px;
   width: 180px;
+  height: 30px;
   background-color: transparent;
   border: 1px solid #666;
   padding: 4px;
@@ -76,14 +75,24 @@ button:hover {
 }
 
 .ControlBar #partner-select {
+  position: relative;
+  top: -1px;
   font-size: 1em;
   margin-left: 10px;
   width: 180px;
+  height: 30px;
   border: 1px solid #666;
   border-radius: 4px;
-  padding: 4px;
-  appearance: none;
 }
+
+.ControlBar button {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 20px;
+  margin-left: 10px;
+  height: 30px;
+}
+
 
 .Conversations {
   display: flex;

@@ -41,7 +41,7 @@ class ControlBar extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <label>
-            Username:
+            <strong>Username:</strong>
             <input
               id='username-input'
               name='username'
@@ -53,7 +53,7 @@ class ControlBar extends Component {
 
           <div>
             <label>
-              Converse with:
+              <strong>Converse with:</strong>
               <select
                 id='partner-select'
                 name='partner'
