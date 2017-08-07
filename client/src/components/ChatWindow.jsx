@@ -9,6 +9,7 @@ class ChatWindow extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.closeWindow = this.closeWindow.bind(this)
+    this.scrollToBottom = this.scrollToBottom.bind(this)
   }
 
   handleSubmit (event) {
