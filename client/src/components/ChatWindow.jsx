@@ -65,7 +65,7 @@ class ChatWindow extends Component {
             <input
               type='text'
               name='message'
-              id='message'
+              className='chat-message'
               placeholder='your message here...'
               value={this.state.message}
               onChange={this.handleChange} />
