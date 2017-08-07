@@ -30,7 +30,7 @@ button:hover {
   display: flex;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .logo {
@@ -48,27 +48,12 @@ button:hover {
 }
 
 .flash {
-  position: absolute;
-  top: 103px;
-  left: 435px;
-  margin: 0;
+  margin: -2px 0px 5px 0px;
+  height: 1em;
   text-align: center;
   font-size: .75em;
   font-weight: bold;
   color: rgba(24, 208, 132, 1);
-  animation: fadeout 3s;
-}
-
-@keyframes fadeout {
-  0% {
-    color: rgba(24, 208, 132, 1);
-  }
-  50% {
-    color: rgba(24, 208, 132, 0.5);
-  }
-  100% {
-    color: rgba(24, 208, 132, 0);
-  }
 }
 
 ::placeholder {
@@ -81,11 +66,8 @@ button:hover {
   overflow: hidden;
   border-radius: 4px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-}
-
-.ControlBar form {
-  display: inline-block;
 }
 
 .ControlBar #username-input {
@@ -117,7 +99,6 @@ button:hover {
   margin-left: 10px;
   height: 30px;
 }
-
 
 .Conversations {
   display: flex;

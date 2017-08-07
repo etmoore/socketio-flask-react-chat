@@ -128,7 +128,7 @@ class App extends Component {
   createFlash (text) {
     this.setState({flashNotice: ''}, () => {
       this.setState({flashNotice: text}, () => {
-        window.setTimeout(this.clearFlash, 2900)
+        window.setTimeout(this.clearFlash, 2500)
       })
     })
   }
@@ -151,9 +151,7 @@ class App extends Component {
           <img className='logo' src={logo} alt='logo' />
           <h1 className='title'>Le Chat</h1>
         </div>
-        {flashNotice &&
-          <Flash notice={flashNotice} />
-        }
+        <Flash notice={flashNotice} />
         <ControlBar
           activeUsers={this.state.activeUsers}
           setUsername={this.setUsername}
