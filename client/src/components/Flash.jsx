@@ -8,9 +8,7 @@ class Flash extends Component {
 }
 
 Flash.PropTypes = {
-  notice: PropTypes.shape({
-    text: PropTypes.string
-  })
+  notice: PropTypes.string
 }
 
 export default Flash
