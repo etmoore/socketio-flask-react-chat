@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint, send_from_directory
+from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, emit, send, join_room, leave_room
 from flask_cors import CORS
 
@@ -7,21 +7,10 @@ app.config['SECRET_KEY'] = 'development key'
 socket = SocketIO(app)
 CORS(app)
 
-##################
-# static = Blueprint('static', __name__)
 
 @app.route('/')
 def serve_static_index():
     return send_from_directory('../../client/build/', 'index.html')
-
-# @app.route('/static/<path:path>')
-# def serve_static(path):
-#     return send_from_directory('../../client/build/static/', path)
-
-@app.route('/service-worker.js')
-def serve_worker():
-    return send_from_directory('../../client/build/', 'service-worker.js')
-#################
 
 
 @socket.on('connect')
