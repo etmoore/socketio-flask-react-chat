@@ -9,12 +9,12 @@ class ControlBar extends Component {
       partner: ''
     }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUsernameSubmit = this.handleUsernameSubmit.bind(this)
+    this.handlePartnerSubmit = this.handlePartnerSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleBlur = this.handleBlur.bind(this)
   }
 
-  handleSubmit (event) {
+  handlePartnerSubmit (event) {
     event.preventDefault()
     const {username, partner} = this.state
     if (username && partner) {
@@ -22,14 +22,17 @@ class ControlBar extends Component {
     }
   }
 
+  handleUsernameSubmit (event) {
+    event.preventDefault()
+    const username = this.state.username
+    if (username) {
+      this.props.setUsername(username)
+    }
+  }
+
   handleChange (event) {
     const {name, value} = event.target
     this.setState({ [name]: value })
-  }
-
-  handleBlur (event) {
-    const username = this.state.username
-    this.props.setUsername(username)
   }
 
   render () {
@@ -39,18 +42,20 @@ class ControlBar extends Component {
     return (
       <div className='ControlBar'>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleUsernameSubmit}>
           <label>
             <strong>Username:</strong>
             <input
               id='username-input'
               name='username'
               onChange={this.handleChange}
-              onBlur={this.handleBlur}
               type='text'
               placeholder='e.g. evmo' />
           </label>
+          <button type='submit'>Register</button>
+        </form>
 
+        <form onSubmit={this.handlePartnerSubmit}>
           <div>
             <label>
               <strong>Converse with:</strong>

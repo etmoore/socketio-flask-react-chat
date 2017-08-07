@@ -56,11 +56,12 @@ button:hover {
   padding: 10px 0px;
   overflow: hidden;
   border-radius: 4px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .ControlBar form {
-  display: flex;
-  justify-content: space-evenly;
+  display: inline-block;
 }
 
 .ControlBar #username-input {
