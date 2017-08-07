@@ -65,10 +65,10 @@ class ControlBar extends Component {
                 name='partner'
                 onChange={this.handleChange}
                 value={this.state.partner}>
-                <option value=''>Select a user...</option>
-                <option value='Dummy1'>Dummy1</option>
-                <option value='Dummy2'>Dummy2</option>
-                <option value='Dummy3'>Dummy3</option>
+                {this.props.activeUsers.length > 0
+                  ? <option value=''>Select a user...</option>
+                  : <option value=''>Waiting for others...</option>
+                }
                 {usersList}
               </select>
             </label>
